@@ -1,17 +1,31 @@
 #! /bin/bash
 
-SHELL=$SHELL
-
 echo "=============================================="
-echo "              Oh My Zsh                   "
+echo "              Zsh (Starship + zinit + fnm)     "
 echo "=============================================="
 
-if [[ $SHELL == *"zsh"* ]];
-then
-    echo "Already Installed Oh My Zsh!"
+# Starship prompt
+if command -v starship &>/dev/null; then
+    echo "Already Installed Starship!"
 else
-    echo "Install Oh My Zsh[https://github.com/robbyrussell/oh-my-zsh]..."
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    echo "Install Starship..."
+    brew install starship
+fi
+
+# zinit plugin manager
+ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
+if [ -d "$ZINIT_HOME" ]; then
+    echo "Already Installed zinit!"
+else
+    echo "Install zinit..."
+    mkdir -p "$(dirname $ZINIT_HOME)"
+    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+# fnm (Fast Node Manager)
+if command -v fnm &>/dev/null; then
+    echo "Already Installed fnm!"
+else
+    echo "Install fnm..."
+    brew install fnm
 fi

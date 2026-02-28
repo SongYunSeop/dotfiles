@@ -1,22 +1,15 @@
 #! /bin/bash
 
 echo "=============================================="
-echo "              Python                    "
+echo "              Python (uv)                     "
 echo "=============================================="
 
-DEFAULT_PYTHON_VERSION=3.11.1
-
-if [ -z "$(which pyenv)" ];
-then
-    echo "Install Pyenv..."
-    brew install pyenv
+if command -v uv &>/dev/null; then
+    echo "Already Installed uv!"
 else
-    echo "Already Installed Pyenv!"
+    echo "Install uv..."
+    brew install uv
 fi
 
-pyenv install $DEFAULT_PYTHON_VERSION
-pyenv global $DEFAULT_PYTHON_VERSION
-
-eval "$(pyenv init -)"
-
-echo "$(python --version) is Installed!"
+uv python install 3.13
+echo "Python 3.13 installed via uv!"

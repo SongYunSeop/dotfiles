@@ -1,0 +1,41 @@
+# Starship prompt config — agnoster-inspired
+
+format = """
+$username\
+$directory\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$docker_context\
+$character"""
+
+[username]
+show_always = false
+style_user = "green bold"
+format = "[$user]($style) "
+
+[directory]
+truncation_length = 1
+truncate_to_repo = false
+style = "blue bold"
+
+[git_branch]
+style = "fg:white bg:black"
+format = "[$symbol$branch]($style) "
+
+[git_status]
+style = "red bold"
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+
+[nodejs]
+format = "[$symbol($version )]($style)"
+
+[docker_context]
+format = "[$symbol$context]($style) "
+
+[character]
+success_symbol = "[❯](green)"
+error_symbol = "[❯](red)"
