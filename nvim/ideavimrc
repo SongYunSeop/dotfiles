@@ -1,0 +1,72 @@
+" Sets history line
+set history=500
+" Mapping <leader> => ,
+let mapleader=","
+" Show current position at bottom-right
+set ruler
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set mat=2
+" Show line number
+set number
+" Set line number relative
+set relativenumber
+
+set noimd
+
+set encoding=UTF-8
+set guifont=KnackSansMono_Nerd_Font:h11
+
+set fileencodings=UTF-8,cp949
+
+set nowrap
+
+set nomodeline
+
+language en_US
+
+" No swap no backup
+set noswapfile
+set nobackup
+
+set pastetoggle=<F4>
+
+" Ignore case when searching
+set ignorecase
+" Be smart when searching
+set smartcase
+" Highlight search last result
+set hlsearch
+" Move cursor when searching
+set incsearch
+set bs=indent,eol,start
+
+" ,q => Quit
+map <leader>q <ESC><ESC>:q<CR>
+map <leader>! <ESC><ESC>:q!<CR>
+
+" F2 => Save File
+imap <F2> <ESC><ESC>:w<CR>
+map <F2> <ESC><ESC>:w<CR>
+
+" ,w => Save File
+imap <leader>w <ESC><ESC>:w<CR>
+map <leader>w <ESC><ESC>:w<CR>
+
+" F3 => Toggle line number
+map <F3> <ESC>:set nu! relativenumber!<CR>
+
+inoremap jk <ESC>
+inoremap JK <ESC>
+inoremap Jk <ESC>
+inoremap jK <ESC>
+inoremap ㅓㅏ <ESC>
+
+vnoremap < <gv
+vnoremap > >gv
+
+vnoremap <BS> <DEL>
+
+nnoremap ; :
+set clipboard+=unnamed
