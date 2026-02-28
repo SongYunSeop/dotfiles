@@ -1,44 +1,33 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export ZSH=$HOME/.oh-my-zsh
+# zinit
+ZINIT_HOME="${HOME}/.local/share/zinit/zinit.git"
+source "${ZINIT_HOME}/zinit.zsh"
 
-ZSH_THEME="agnoster"
+# zinit plugins
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
-plugins=(
-    git
-    macos
-    docker
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-)
+# OMZ snippets (lightweight, no full OMZ needed)
+zinit snippet OMZP::git
+zinit snippet OMZP::docker
 
-source $ZSH/oh-my-zsh.sh
+# Starship prompt
+eval "$(starship init zsh)"
 
-prompt_dir() {
-    prompt_segment blue black "${PWD##*/}"
-}
+# fnm (Node.js)
+eval "$(fnm env --use-on-cd --shell zsh)"
 
-prompt_context() {
-  local user=`whoami`
-
-  if [[ "$user" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment green default "%(!.%{%F{yellow}%}.)"
-  fi
-}
-
-alias vi='nvim'
-alias vim='nvim'
-alias dc='docker-compose'
-alias dm='docker-machine'
-alias ipy='ipython'
-alias pt='poetry'
-
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
+# uv / Python (PATH only, no shell init needed)
 export PATH="$HOME/.local/bin:$PATH"
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(pyenv init -)"
+# Aliases
+alias vi='nvim'
+alias vim='nvim'
+alias dc='docker compose'
+alias dm='docker-machine'
+alias ipy='ipython'
+
+# Functions
+function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
