@@ -1,13 +1,16 @@
 # Dotfiles
 
-Personal Terminal Setting for OSX
+Personal Terminal Setting for macOS
 
-- vim
-- tmux
-- zsh
+- **Neovim** (Lua config + lazy.nvim)
+- **tmux**
+- **zsh** (Starship + zinit)
+- **Claude Code**
+- **fnm** (Node.js version manager)
+- **uv** (Python toolchain)
 
 # Setting
 
-```bash 
+```bash
 $ ./setting.sh
 ```
