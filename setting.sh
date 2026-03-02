@@ -29,30 +29,36 @@ if $NEEDS_BACKUP; then
     done
 fi
 
-# Homebrew
-source ${PWD}/brew/setting.sh
+SERVICES=(brew zsh python nvim tmux claude keyboard)
 
-# Font
-brew install --cask font-hack-nerd-font
+setup_brew()     { source ${PWD}/brew/setting.sh; brew install --cask font-hack-nerd-font; }
+setup_zsh()      { source ${PWD}/zsh/setting.sh; ln -sf ${PWD}/zsh/zshrc ~/.zshrc; ln -sf ${PWD}/zsh/starship.toml ~/.config/starship.toml; }
+setup_python()   { source ${PWD}/python/setting.sh; }
+setup_nvim()     { source ${PWD}/nvim/setting.sh; }
+setup_tmux()     { source ${PWD}/tmux/setting.sh; }
+setup_claude()   { source ${PWD}/claude/setting.sh; }
+setup_keyboard() { source ${PWD}/keyboard/setting.sh; }
 
-# zsh
-source ${PWD}/zsh/setting.sh
-ln -sf ${PWD}/zsh/zshrc ~/.zshrc
-ln -sf ${PWD}/zsh/starship.toml ~/.config/starship.toml
-
-# Python
-source ${PWD}/python/setting.sh
-
-# Neovim
-source ${PWD}/nvim/setting.sh
-
-# tmux.conf
-source ${PWD}/tmux/setting.sh
-
-# Claude Code
-source ${PWD}/claude/setting.sh
-
-# keyboard
-source ${PWD}/keyboard/setting.sh
+if [ $# -eq 0 ]; then
+    for service in "${SERVICES[@]}"; do
+        "setup_${service}"
+    done
+else
+    for arg in "$@"; do
+        valid=false
+        for service in "${SERVICES[@]}"; do
+            if [ "$arg" = "$service" ]; then
+                valid=true
+                break
+            fi
+        done
+        if ! $valid; then
+            echo "Unknown service: $arg"
+            echo "Available services: ${SERVICES[*]}"
+            exit 1
+        fi
+        "setup_${arg}"
+    done
+fi
 
 echo DONE🎉🎉🎉
