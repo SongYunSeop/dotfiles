@@ -8,6 +8,27 @@ then
     exit
 fi
 
+# Backup existing dotfiles before overwriting
+BACKUP_TARGETS=(~/.zshrc ~/.config/starship.toml ~/.config/nvim ~/.ideavimrc ~/.tmux.conf ~/.claude/settings.json)
+NEEDS_BACKUP=false
+for f in "${BACKUP_TARGETS[@]}"; do
+    if [ -e "$f" ] && [ ! -L "$f" ]; then
+        NEEDS_BACKUP=true
+        break
+    fi
+done
+if $NEEDS_BACKUP; then
+    BACKUP_DIR="$HOME/.dotfiles-backup/$(date +%Y%m%d%H%M%S)"
+    echo "=============================================="
+    echo "  Backing up existing dotfiles to:"
+    echo "  $BACKUP_DIR"
+    echo "=============================================="
+    mkdir -p "$BACKUP_DIR"
+    for f in "${BACKUP_TARGETS[@]}"; do
+        [ -e "$f" ] && [ ! -L "$f" ] && cp -rL "$f" "$BACKUP_DIR/"
+    done
+fi
+
 # Homebrew
 source ${PWD}/brew/setting.sh
 
