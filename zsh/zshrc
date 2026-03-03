@@ -30,6 +30,12 @@ alias ll='eza --icons --group-directories-first -la'
 alias dc='docker compose'
 alias dm='docker-machine'
 alias ipy='ipython'
+alias tf='terraform'
+alias gc='git checkout'
+alias gw='git worktree'
+alias cc="claude --dangerously-skip-permissions"
+alias ccr="claude --dangerously-skip-permissions --resume"
+alias pt='poetry'
 
 # Functions
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
