@@ -22,6 +22,14 @@ else
     git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+# eza (modern ls replacement)
+if command -v eza &>/dev/null; then
+    echo "Already Installed eza!"
+else
+    echo "Install eza..."
+    brew install eza
+fi
+
 # fnm (Fast Node Manager)
 if command -v fnm &>/dev/null; then
     echo "Already Installed fnm!"

@@ -25,6 +25,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # Aliases
 alias vi='nvim'
 alias vim='nvim'
+alias ls='eza --icons --group-directories-first'
+alias ll='eza --icons --group-directories-first -la'
 alias dc='docker compose'
 alias dm='docker-machine'
 alias ipy='ipython'
