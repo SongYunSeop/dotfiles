@@ -17,7 +17,7 @@ return {
       },
     })
 
-    vim.keymap.set("n", "<F9>", ":NvimTreeToggle<CR>", { silent = true })
+    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle file explorer" })
 
     vim.api.nvim_create_autocmd("VimEnter", {
       callback = function()

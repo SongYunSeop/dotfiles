@@ -39,3 +39,28 @@ alias pt='poetry'
 
 # Functions
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
+function assh() { ssh -i ~/.ssh/howmuchhome.pem ubuntu@$@; }
+eval "$(pyenv init -)"
+
+# export LDFLAGS="-L/opt/homebrew/opt/postgresql@12/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/postgresql@12/include"
+# export PATH="/opt/homebrew/opt/postgresql@12/bin:$PATH"
+# 
+# export NODE_OPTIONS="--experimental-fetch"
+# 
+# # bun completions
+# [ -s "/Users/yunseop/.bun/_bun" ] && source "/Users/yunseop/.bun/_bun"
+# 
+# # bun
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
+# 
+# # The following lines have been added by Docker Desktop to enable Docker CLI completions.
+# fpath=(/Users/yunseop/.docker/completions $fpath)
+# autoload -Uz compinit
+# compinit
+# # End of Docker CLI completions
+#
+export COLORTERM=truecolor
+export BASH_MAX_OUTPUT_LENGTH=30000
+export CLAUDE_CODE_FILE_READ_MAX_OUTPUT_TOKENS=25000

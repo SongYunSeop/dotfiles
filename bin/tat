@@ -6,7 +6,7 @@
 session_name="$(basename "$PWD" | tr . -)"
 
 session_exists() {
-  tmux list-sessions | sed -E 's/:.*$//' | grep -q "^$session_name$"
+  tmux has-session -t "=$session_name" 2>/dev/null
 }
 
 not_in_tmux() {

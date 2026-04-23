@@ -9,7 +9,7 @@ then
 fi
 
 # Backup existing dotfiles before overwriting
-BACKUP_TARGETS=(~/.zshrc ~/.config/starship.toml ~/.config/nvim ~/.ideavimrc ~/.tmux.conf ~/.claude/settings.json)
+BACKUP_TARGETS=(~/.zshrc ~/.config/starship.toml ~/.config/nvim ~/.ideavimrc ~/.tmux.conf ~/.claude/settings.json ~/.config/ghostty/config)
 NEEDS_BACKUP=false
 for f in "${BACKUP_TARGETS[@]}"; do
     if [ -e "$f" ] && [ ! -L "$f" ]; then
@@ -29,15 +29,16 @@ if $NEEDS_BACKUP; then
     done
 fi
 
-SERVICES=(brew zsh python nvim tmux claude keyboard)
+SERVICES=(brew zsh python nvim tmux claude keyboard ghostty)
 
-setup_brew()     { source ${PWD}/brew/setting.sh; brew install --cask font-hack-nerd-font; }
+setup_brew()     { source ${PWD}/brew/setting.sh; }
 setup_zsh()      { source ${PWD}/zsh/setting.sh; ln -sf ${PWD}/zsh/zshrc ~/.zshrc; ln -sf ${PWD}/zsh/starship.toml ~/.config/starship.toml; }
 setup_python()   { source ${PWD}/python/setting.sh; }
 setup_nvim()     { source ${PWD}/nvim/setting.sh; }
 setup_tmux()     { source ${PWD}/tmux/setting.sh; }
 setup_claude()   { source ${PWD}/claude/setting.sh; }
 setup_keyboard() { source ${PWD}/keyboard/setting.sh; }
+setup_ghostty()  { source ${PWD}/ghostty/setting.sh; }
 
 if [ $# -eq 0 ]; then
     for service in "${SERVICES[@]}"; do

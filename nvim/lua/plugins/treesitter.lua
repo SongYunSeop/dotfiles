@@ -4,8 +4,8 @@ return {
   opts = {
     ensure_installed = {
       "bash", "c", "css", "dockerfile", "go", "html",
-      "javascript", "json", "lua", "markdown", "python",
-      "rust", "toml", "tsx", "typescript", "yaml",
+      "javascript", "json", "lua", "markdown", "markdown_inline",
+      "python", "rust", "toml", "tsx", "typescript", "yaml",
     },
     highlight = { enable = true },
     indent = { enable = true },

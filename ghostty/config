@@ -1,0 +1,13 @@
+working-directory = home
+tab-inherit-working-directory = false
+
+# Font
+font-family = Hack Nerd Font Mono
+font-size = 14
+font-thicken = true
+
+# tmux가 scrollback 관리하므로 Ghostty 자체 scrollback 불필요
+scrollback-limit = 0
+
+# semantic prompt 지원 (tmux focus-events 시너지)
+shell-integration = zsh

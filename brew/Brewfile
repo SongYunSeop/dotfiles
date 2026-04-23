@@ -1,0 +1,12 @@
+# Shell & prompt
+brew "starship"
+brew "eza"
+brew "fnm"
+brew "pyenv"
+
+# Editor & terminal
+brew "neovim"
+brew "tmux"
+
+# Fonts
+cask "font-hack-nerd-font"

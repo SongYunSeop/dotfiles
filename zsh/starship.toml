@@ -5,6 +5,7 @@ $username\
 $directory\
 $git_branch\
 $git_status\
+$git_metrics\
 $python\
 $nodejs\
 $docker_context\
@@ -35,6 +36,10 @@ format = "[$symbol($version )]($style)"
 
 [docker_context]
 format = "[$symbol$context]($style) "
+
+[git_metrics]
+disabled = false
+format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
 
 [character]
 success_symbol = "[❯](green)"
