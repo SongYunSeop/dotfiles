@@ -6,6 +6,7 @@ Personal Terminal Setting for macOS
 - **tmux**
 - **zsh** (Starship + zinit)
 - **Claude Code**
+- **Pi Coding Agent**
 - **fnm** (Node.js version manager)
 - **uv** (Python toolchain)
 
